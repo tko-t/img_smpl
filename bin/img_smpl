@@ -1,0 +1,29 @@
+#! /usr/bin/env ruby
+
+require 'rmagick'
+require 'trollop'
+include Magick
+
+opts = Trollop::options do
+  opt :width,  'option width',  :default => 200
+  opt :height,  'option width',  :default => 200
+  opt :name, 'optioh name', :default => "img"
+  opt :count, 'optioh couunt', :default => 1
+end
+
+w = opts[:width]
+h = opts[:height]
+
+opts[:count].times.each do |idx|
+  r = %(00#{rand(256).to_s(16)})[-2,2]
+  g = %(00#{rand(256).to_s(16)})[-2,2]
+  b = %(00#{rand(256).to_s(16)})[-2,2]
+  rgb = %(##{r << g << b})
+  img = Image.new(w, h){
+    self.background_color = rgb
+  }
+  img.write("#{opts[:name] + ('_' << idx.to_s)}.png")
+end
+
+exit
+
