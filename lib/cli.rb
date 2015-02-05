@@ -2,6 +2,7 @@ require 'trollop'
 module Cli
   def options
     Trollop::options do
+      version ImgSmpl::VERSION
       opt :width,  'option width',  :default => 200
       opt :height,  'option width',  :default => 200
       opt :name, 'optioh name', :default => "img"
