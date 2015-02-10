@@ -13,12 +13,13 @@ module ImgSmpl
 
     w = @options[:width]
     h = @options[:height]
+    e = @options[:ext]
     @options[:count].times.each do |idx|
       #a = %(0#{rand(256).to_s(16)})[-2,2]
       r = %(0#{rand(256).to_s(16)})[-2,2]
       g = %(0#{rand(256).to_s(16)})[-2,2]
       b = %(0#{rand(256).to_s(16)})[-2,2]
-      rgb = %(#00#{r << g << b})
+      rgb = %(##{r << g << b})
       img = Image.new(w, h) {
         self.background_color = "none"
       }
@@ -26,7 +27,7 @@ module ImgSmpl
       idr.fill = rgb
       idr.rectangle(0, 0, w, h)
       idr.draw(img);
-      img.write("#{output}#{@options[:name]}_#{idx.to_s}.png")
+      img.write("#{output}#{@options[:name]}_#{idx.to_s}.#{e}")
     end
   end
 end
