@@ -10,7 +10,7 @@ GEM
   specs:
     rake (10.4.2)
     rmagick (2.13.4)
-    trollop (2.1.1)
+    trollop (2.9.10)
 
 PLATFORMS
   ruby
